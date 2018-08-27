@@ -1,321 +1,343 @@
 \documentclass[12pt]{article}
- \usepackage[margin=1in]{geometry}
-\usepackage{amsmath,amsthm,amssymb,amsfonts}
+    \usepackage[margin=1in]{geometry}
+   \usepackage{amsmath,amsthm,amssymb,amsfonts}
 
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}
+   \newcommand{\N}{\mathbb{N}}
+   \newcommand{\Z}{\mathbb{Z}}
+
+   \newenvironment{problem}[2][Problem]{\begin{trivlist}
+   \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
 
-\newenvironment{problem}[2][Problem]{\begin{trivlist}
-\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+   \newenvironment{solution}{\paragraph{Solution:}}{\hfill}
 
-\newenvironment{solution}{\paragraph{Solution:}}{\hfill}
 
+   \usepackage{pgfplots}
+   \usetikzlibrary{arrows}
+   \usetikzlibrary{decorations.markings}
+   \usetikzlibrary{datavisualization}
+   \usetikzlibrary{datavisualization.formats.functions}
+   %\usepackage{pstricks-add}
 
-\usepackage{pgfplots}
-\usetikzlibrary{arrows}
-\usetikzlibrary{decorations.markings}
-\usetikzlibrary{datavisualization}
-\usetikzlibrary{datavisualization.formats.functions}
-%\usepackage{pstricks-add}
+   \pgfplotsset{every axis/.append style={
+                       axis x line=middle,    % put the x axis in the middle
+                       axis y line=middle,    % put the y axis in the middle
+                       axis line style={<->,color=gray}, % arrows on the axis
+                       xlabel={$x$},          % default put x on x-axis
+                       ylabel={$y$},          % default put y on y-axis
+               }}
+   \pgfplotsset{compat=1.15}
 
-\pgfplotsset{every axis/.append style={
-                    axis x line=middle,    % put the x axis in the middle
-                    axis y line=middle,    % put the y axis in the middle
-                    axis line style={<->,color=gray}, % arrows on the axis
-                    xlabel={$x$},          % default put x on x-axis
-                    ylabel={$y$},          % default put y on y-axis
-            }}
-\pgfplotsset{compat=1.15}
+   \usepackage[parfill]{parskip}
+   \usepackage[shortlabels]{enumitem}
 
-\usepackage[parfill]{parskip}
-\usepackage[shortlabels]{enumitem}
 
+   \newcommand{\pgraph}[4]{
+       \begin{center}
 
-\newcommand{\pgraph}[4]{
-    \begin{center}
-    	
-    \begin{tikzpicture}
-    \begin{axis}[
-        trig format plots=rad,
-        axis equal,
-        grid=both
-    ]
-    \addplot [domain=#3:#4, variable=\t, samples=50, black, decoration={
-        markings,
-        mark=between positions 0.2 and 1 step 4em with {\arrow [scale=1.5]{stealth}}
-        }, postaction=decorate] 
-    ({#1}, {#2});
-    
-    \end{axis}
-    \end{tikzpicture}
-    
-    \end{center}
-}
+       \begin{tikzpicture}
+       \begin{axis}[
+           trig format plots=rad,
+           axis equal,
+           grid=both
+       ]
+       \addplot [domain=#3:#4, variable=\t, samples=50, black, decoration={
+           markings,
+           mark=between positions 0.2 and 1 step 4em with {\arrow [scale=1.5]{stealth}}
+           }, postaction=decorate]
+       ({#1}, {#2});
 
+       \end{axis}
+       \end{tikzpicture}
 
-\begin{document}
+       \end{center}
+   }
 
-%\renewcommand{\qedsymbol}{\filledbox}
-%Good resources for looking up how to do stuff:
-%Binary operators: http://www.access2science.com/latex/Binary.html
-%General help: http://en.wikibooks.org/wiki/LaTeX/Mathematics
-%Or just google stuff
+   \newcommand{\cgraph}[3]{
+       \begin{center}
 
-\title{Math 53: Week 1 Homework}
-\author{Abhijay Bhatnagar}
-\maketitle
+       \begin{tikzpicture}
+       \begin{axis}[
+           trig format plots=rad,
+           axis equal,
+           grid=both
+       ]
+       \addplot [domain=#3:#4, variable=\t, samples=50, black, decoration={
+           markings,
+           mark=between positions 0.2 and 1 step 4em with {\arrow [scale=1.5]{stealth}}
+           }, postaction=decorate]
+       {#1};
 
-\setcounter{secnumdepth}{0} %% no numbering
-\section{Assignment}
+       \end{axis}
+       \end{tikzpicture}
 
-Section 10.1: 1, 2, 3, 5, 7, 11, 12, 24, 37, 38
+       \end{center}
+   }
 
-Section 10.2: 1, 2, 3, 4, 5, 11, 13, 17, 18, 19, 29, 30, 32, 33, 41, 42, 43, 44, 48, 51, 52, 53, 73, 74 
 
-%========Problem 10.1.1=========
-\def \xt {1 - t^2}
-\def \yt {2*t - t^2}
-\def \dl {-1}
-\def \dr {2}
+   \begin{document}
 
-\begin{problem}{10.1.1} Graph the parametric equations within the domain.
+   %\renewcommand{\qedsymbol}{\filledbox}
+   %Good resources for looking up how to do stuff:
+   %Binary operators: http://www.access2science.com/latex/Binary.html
+   %General help: http://en.wikibooks.org/wiki/LaTeX/Mathematics
+   %Or just google stuff
 
-\[ 	x = \xt \]
-\[	y = \yt \]
-\[	\dl \leqslant t \leqslant \dr \]
-\end{problem}
+   \title{Math 53: Week 1 Homework}
+   \author{Abhijay Bhatnagar}
+   \maketitle
 
-\begin{solution}
+   \setcounter{secnumdepth}{0} %% no numbering
+   \section{Assignment}
 
+   Section 10.1: 1, 2, 3, 5, 7, 11, 12, 24, 37, 38
 
-\pgraph{\xt}{\yt}{\dl}{\dr} 
+   Section 10.2: 1, 2, 3, 4, 5, 11, 13, 17, 18, 19, 29, 30, 32, 33, 41, 42, 43, 44, 48, 51, 52, 53, 73, 74
 
-\end{solution}
+   %========Problem 10.1.1=========
+   \def \xt {1 - t^2}
+   \def \yt {2*t - t^2}
+   \def \dl {-1}
+   \def \dr {2}
 
-%========Problem 10.1.2=========
+   \begin{problem}{10.1.1} Graph the parametric equations within the domain.
 
-\newpage
-\begin{problem}{10.1.2} Graph the parametric equations within the domain.
-\[ 	x=t^3-t \]
-\[	y = t^2 + 2 \]
-\[	-2 \leqslant t \leqslant 2 \]
-\end{problem}
+   \[ 	x = \xt \]
+   \[	y = \yt \]
+   \[	\dl \leqslant t \leqslant \dr \]
+   \end{problem}
 
-\begin{solution}
+   \begin{solution}
 
 
-\pgraph{t^3-t}{t^2 + 2}{-2}{2} 
+   \pgraph{\xt}{\yt}{\dl}{\dr}
 
-\end{solution}
+   \end{solution}
 
-%========Problem 10.1.3=========
+   %========Problem 10.1.2=========
 
-\begin{problem}{10.1.3} Graph the parametric equations within the domain.
-\[ 	x = t + \sin(t) \]
-\[	y = \cos(t) \]
-\[	-\pi \leqslant t \leqslant \pi \]
-\end{problem}
+   \newpage
+   \begin{problem}{10.1.2} Graph the parametric equations within the domain.
+   \[ 	x=t^3-t \]
+   \[	y = t^2 + 2 \]
+   \[	-2 \leqslant t \leqslant 2 \]
+   \end{problem}
 
-\begin{solution}
+   \begin{solution}
 
 
-\pgraph{t + sin(t)}{cos(t)}{-pi}{pi}
+   \pgraph{t^3-t}{t^2 + 2}{-2}{2}
 
-\end{solution}
+   \end{solution}
 
-%========Problem 10.1.5=========
-\def \xt {2*t-1}
-\def \yt {1/2 * t +1}
-\def \dl {-5}
-\def \dr {5}
+   %========Problem 10.1.3=========
 
-\begin{problem}{10.1.5}
+   \begin{problem}{10.1.3} Graph the parametric equations within the domain.
+   \[ 	x = t + \sin(t) \]
+   \[	y = \cos(t) \]
+   \[	-\pi \leqslant t \leqslant \pi \]
+   \end{problem}
 
-\begin{enumerate}[(a)]
-\item Sketch the curve by using the parametric equations to plot points. Indicate with an arrow the direction in which the curve is traced as $t$ increases.
-\item Eliminate the parameter to find a Cartesian equation of the curve.
-\end{enumerate}
+   \begin{solution}
 
-\[ 	x = \xt \]
-\[	y = \yt \]
-\end{problem}
 
-\begin{solution}
+   \pgraph{t + sin(t)}{cos(t)}{-pi}{pi}
 
-\begin{enumerate}[(a)]
-\item
-\hskip \labelsep
-\pgraph{\xt}{\yt}{\dl}{\dr}
+   \end{solution}
 
-\item
+   %========Problem 10.1.5=========
+   \def \xt {2*t-1}
+   \def \yt {1/2 * t +1}
+   \def \dl {-5}
+   \def \dr {5}
 
-\begin{equation} \label{eq1}
-    x = \xt
-\end{equation}
-    Solving $x$ for $t$ \dots
-\begin{equation} \label{eq2}
-    t = \frac{x+1}{2}
-\end{equation}
-    Inserting \eqref{eq2} into the equation for $y$ \dots
-\begin{equation}
-\begin{split}
-    y &=\frac{1}{2}*\frac{x+1}{2}+1 \\
-      &=\frac{1}{4} x+\frac{5}{4}
-\end{split}
-\end{equation}
+   \begin{problem}{10.1.5}
 
-\end{enumerate}
+   \begin{enumerate}[(a)]
+   \item Sketch the curve by using the parametric equations to plot points. Indicate with an arrow the direction in which the curve is traced as $t$ increases.
+   \item Eliminate the parameter to find a Cartesian equation of the curve.
+   \end{enumerate}
 
-\end{solution}
+   \[ 	x = \xt \]
+   \[	y = \yt \]
+   \end{problem}
 
+   \begin{solution}
 
-%========Problem 10.1.7=========
-\newpage
-\def \xt {t^2-3}
-\def \yt {t + 2}
-\def \dl {-3}
-\def \dr {3}
+   \begin{enumerate}[(a)]
+   \item
+   \hskip \labelsep
+   \pgraph{\xt}{\yt}{\dl}{\dr}
 
-\begin{problem}{10.1.7}
+   \item
 
-\begin{enumerate}[(a)]
-\item Sketch the curve by using the parametric equations to plot points. Indicate with an arrow the direction in which the curve is traced as $t$ increases.
-\item Eliminate the parameter to find a Cartesian equation of the curve.
-\end{enumerate}
+   \begin{equation} \label{eq1}
+       x = \xt
+   \end{equation}
+       Solving $x$ for $t$ \dots
+   \begin{equation} \label{eq2}
+       t = \frac{x+1}{2}
+   \end{equation}
+       Inserting \eqref{eq2} into the equation for $y$ \dots
+   \begin{equation}
+   \begin{split}
+       y &=\frac{1}{2}*\frac{x+1}{2}+1 \\
+         &=\frac{1}{4} x+\frac{5}{4}
+   \end{split}
+   \end{equation}
 
-\[ 	x = \xt \]
-\[	y = \yt \]
-\[	\dl \leqslant t \leqslant \dr \]
-\end{problem}
+   \end{enumerate}
 
-\begin{solution}
+   \end{solution}
 
-\begin{enumerate}[(a)]
-\item
-\hskip \labelsep
-\pgraph{\xt}{\yt}{\dl}{\dr}
 
-\item
+   %========Problem 10.1.7=========
+   \newpage
+   \def \xt {t^2-3}
+   \def \yt {t + 2}
+   \def \dl {-3}
+   \def \dr {3}
 
-\begin{equation} \label{eq1}
-    x=\xt
-\end{equation}
-    Solving $x$ for $t$ \dots
-\begin{equation} \label{eq2}
-    t = \sqrt{x+3}
-\end{equation}
-    Inserting \eqref{eq2} into the equation for $y$ \dots
-\begin{equation}
-    y =\sqrt{x+3}+2
-\end{equation}
+   \begin{problem}{10.1.7}
 
-\end{enumerate}
+   \begin{enumerate}[(a)]
+   \item Sketch the curve by using the parametric equations to plot points. Indicate with an arrow the direction in which the curve is traced as $t$ increases.
+   \item Eliminate the parameter to find a Cartesian equation of the curve.
+   \end{enumerate}
 
-\end{solution}
+   \[ 	x = \xt \]
+   \[	y = \yt \]
+   \[	\dl \leqslant t \leqslant \dr \]
+   \end{problem}
 
+   \begin{solution}
 
+   \begin{enumerate}[(a)]
+   \item
+   \hskip \labelsep
+   \pgraph{\xt}{\yt}{\dl}{\dr}
 
-%========Problem 10.1.11=========
+   \item
 
-\newpage
-\def \xt {sin(1/2*t)}
-\def \yt {cos(1/2*t)}
-\def \dl {-pi}
-\def \dr {pi}
+   \begin{equation} \label{eq1}
+       x=\xt
+   \end{equation}
+       Solving $x$ for $t$ \dots
+   \begin{equation} \label{eq2}
+       t = \sqrt{x+3}
+   \end{equation}
+       Inserting \eqref{eq2} into the equation for $y$ \dots
+   \begin{equation}
+       y =\sqrt{x+3}+2
+   \end{equation}
 
-\begin{problem}{10.1.11}
+   \end{enumerate}
 
-\begin{enumerate}[(a)]
-\item Eliminate the parameter to find a Cartesian equation of the curve.
-\item Sketch the curve by using the parametric equations to plot points. Indicate with an arrow the direction in which the curve is traced as $t$ increases.
-\end{enumerate}
+   \end{solution}
 
-\[ 	x = \xt \]
-\[	y = \yt \]
-\[	\dl \leqslant t \leqslant \dr \]
-\end{problem}
 
-\begin{solution}
 
-\begin{enumerate}[(a)]
-\item
+   %========Problem 10.1.11=========
 
-\begin{equation} \label{eq1}
-    x=\xt
-\end{equation}
-    Solving $x$ for $t$ \dots
-\begin{equation} \label{eq2}
-	\def \t{ \frac{\arcsin{x}}{2} }
-    t = \t
-\end{equation}
-    Inserting \eqref{eq2} into the equation for $y$ \dots
-\begin{equation}
-    y = cos(1/2 * \t)
-\end{equation}
+   \newpage
+   \def \xt {sin(1/2*t)}
+   \def \yt {cos(1/2*t)}
+   \def \dl {-pi}
+   \def \dr {pi}
 
-\item
-\hskip \labelsep
-\pgraph{\xt}{\yt}{\dl}{\dr}
+   \begin{problem}{10.1.11}
 
+   \begin{enumerate}[(a)]
+   \item Eliminate the parameter to find a Cartesian equation of the curve.
+   \item Sketch the curve by using the parametric equations to plot points. Indicate with an arrow the direction in which the curve is traced as $t$ increases.
+   \end{enumerate}
 
-\end{enumerate}
+   \[ 	x = \xt \]
+   \[	y = \yt \]
+   \[	\dl \leqslant t \leqslant \dr \]
+   \end{problem}
 
-\end{solution}
+   \begin{solution}
 
+   \begin{enumerate}[(a)]
+   \item
 
+   \begin{equation} \label{eq1}
+       x=\xt
+   \end{equation}
+       Solving $x$ for $t$ \dots
 
-%========Problem 10.1.12=========
+   \def \t{ \frac{\arcsin{x}}{2} }
+   \begin{equation} \label{eq2}
+       t = \t
+   \end{equation}
+       Inserting \eqref{eq2} into the equation for $y$ \dots
+   \begin{equation}
+       y = cos(1/2 * \t)
+   \end{equation}
 
-%========Problem 10.1.24=========
+   \item
+   \hskip \labelsep
+   \cgraph{cos(1/2 * arcsin{x} / 2)}{\dl}{\dr}
 
-%========Problem 10.1.37=========
-%========Problem 10.1.38=========
 
+   \end{enumerate}
 
-%========Problem 10.2.1=========
-%========Problem 10.2.2=========
-%========Problem 10.2.3=========
-%========Problem 10.2.4=========
-%========Problem 10.2.5=========
+   \end{solution}
 
 
 
+   %========Problem 10.1.12=========
 
+   %========Problem 10.1.24=========
 
+   %========Problem 10.1.37=========
+   %========Problem 10.1.38=========
 
 
+   %========Problem 10.2.1=========
+   %========Problem 10.2.2=========
+   %========Problem 10.2.3=========
+   %========Problem 10.2.4=========
+   %========Problem 10.2.5=========
 
 
-%
-%
-%
-%\begin{problem}{10.1.2}
-%x−t3 1t, y−t2 12, 22<t<2
-%\end{problem}
-%
-%\begin{proof}
-%Proof goes here. Repeat as needed
-%\end{proof}
-%
-%
-%
-%\begin{problem}{10.1.3}
-%x−t1sint, y−cost, 2 <t< 
-%\end{problem}
-%
-%\begin{proof}
-%Proof goes here. Repeat as needed
-%\end{proof}
 
-%
-%
-%\begin{problem}{x.yz}
-%Statement of problem goes here
-%\end{problem}
-%
-%\begin{proof}
-%Proof goes here. Repeat as needed
-%\end{proof}
 
 
-\end{document}
+
+
+
+
+   %
+   %
+   %
+   %\begin{problem}{10.1.2}
+   %x−t3 1t, y−t2 12, 22<t<2
+   %\end{problem}
+   %
+   %\begin{proof}
+   %Proof goes here. Repeat as needed
+   %\end{proof}
+   %
+   %
+   %
+   %\begin{problem}{10.1.3}
+   %x−t1sint, y−cost, 2 <t<
+   %\end{problem}
+   %
+   %\begin{proof}
+   %Proof goes here. Repeat as needed
+   %\end{proof}
+
+   %
+   %
+   %\begin{problem}{x.yz}
+   %Statement of problem goes here
+   %\end{problem}
+   %
+   %\begin{proof}
+   %Proof goes here. Repeat as needed
+   %\end{proof}
+
+
+   \end{document}
