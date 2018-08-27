@@ -7,11 +7,51 @@
 
 \newenvironment{problem}[2][Problem]{\begin{trivlist}
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
-%If you want to title your bold things something different just make another thing exactly like this but replace "problem" with the name of the thing you want, like theorem or lemma or whatever
+
+\newenvironment{solution}{\paragraph{Solution:}}{\hfill}
 
 
-\usepackage{tkz-fct}  
-\usepackage[parfill]{parskip, scrartcl}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{datavisualization}
+\usetikzlibrary{datavisualization.formats.functions}
+%\usepackage{pstricks-add}
+
+\pgfplotsset{every axis/.append style={
+                    axis x line=middle,    % put the x axis in the middle
+                    axis y line=middle,    % put the y axis in the middle
+                    axis line style={<->,color=gray}, % arrows on the axis
+                    xlabel={$x$},          % default put x on x-axis
+                    ylabel={$y$},          % default put y on y-axis
+            }}
+\pgfplotsset{compat=1.15}
+
+\usepackage[parfill]{parskip}
+\usepackage[shortlabels]{enumitem}
+
+
+\newcommand{\pgraph}[4]{
+    \begin{center}
+    	
+    \begin{tikzpicture}
+    \begin{axis}[
+        trig format plots=rad,
+        axis equal,
+        grid=both
+    ]
+    \addplot [domain=#3:#4, variable=\t, samples=50, black, decoration={
+        markings,
+        mark=between positions 0.2 and 1 step 4em with {\arrow [scale=1.5]{stealth}}
+        }, postaction=decorate] 
+    ({#1}, {#2});
+    
+    \end{axis}
+    \end{tikzpicture}
+    
+    \end{center}
+}
+
 
 \begin{document}
 
@@ -30,35 +70,252 @@
 
 Section 10.1: 1, 2, 3, 5, 7, 11, 12, 24, 37, 38
 
-Section 10.2: 1, 2, 3, 4, 5, 11, 13, 17, 18, 19, 29, 30, 32, 33, 41, 42, 43, 44, 48, 51, 52, 53, 73, 74
-\newline
+Section 10.2: 1, 2, 3, 4, 5, 11, 13, 17, 18, 19, 29, 30, 32, 33, 41, 42, 43, 44, 48, 51, 52, 53, 73, 74 
 
+%========Problem 10.1.1=========
+\def \xt {1 - t^2}
+\def \yt {2*t - t^2}
+\def \dl {-1}
+\def \dr {2}
 
-\begin{problem}{10.1.1}
-Statement of problem goes here
+\begin{problem}{10.1.1} Graph the parametric equations within the domain.
+
+\[ 	x = \xt \]
+\[	y = \yt \]
+\[	\dl \leqslant t \leqslant \dr \]
 \end{problem}
 
-\begin{proof}
-Proof goes here. Repeat as needed
-\end{proof}
-
-\begin{tikzpicture}[scale=1.5]
-  \tkzInit[xmin=-5,xmax=5,xstep=2,ymin=-10,ymax=4,ystep=2]
-  \tkzGrid[sub]
-  \tkzAxeX[step=2]
-  \tkzAxeY[step=2]
-  \tkzFctPar[samples=400,domain=-pi:pi]{t**3-3*t}{3*t**2-9}
-\end{tikzpicture}
+\begin{solution}
 
 
+\pgraph{\xt}{\yt}{\dl}{\dr} 
 
+\end{solution}
 
-\begin{problem}{x.yz}
-Statement of problem goes here
+%========Problem 10.1.2=========
+
+\newpage
+\begin{problem}{10.1.2} Graph the parametric equations within the domain.
+\[ 	x=t^3-t \]
+\[	y = t^2 + 2 \]
+\[	-2 \leqslant t \leqslant 2 \]
 \end{problem}
 
-\begin{proof}
-Proof goes here. Repeat as needed
-\end{proof}
+\begin{solution}
+
+
+\pgraph{t^3-t}{t^2 + 2}{-2}{2} 
+
+\end{solution}
+
+%========Problem 10.1.3=========
+
+\begin{problem}{10.1.3} Graph the parametric equations within the domain.
+\[ 	x = t + \sin(t) \]
+\[	y = \cos(t) \]
+\[	-\pi \leqslant t \leqslant \pi \]
+\end{problem}
+
+\begin{solution}
+
+
+\pgraph{t + sin(t)}{cos(t)}{-pi}{pi}
+
+\end{solution}
+
+%========Problem 10.1.5=========
+\def \xt {2*t-1}
+\def \yt {1/2 * t +1}
+\def \dl {-5}
+\def \dr {5}
+
+\begin{problem}{10.1.5}
+
+\begin{enumerate}[(a)]
+\item Sketch the curve by using the parametric equations to plot points. Indicate with an arrow the direction in which the curve is traced as $t$ increases.
+\item Eliminate the parameter to find a Cartesian equation of the curve.
+\end{enumerate}
+
+\[ 	x = \xt \]
+\[	y = \yt \]
+\end{problem}
+
+\begin{solution}
+
+\begin{enumerate}[(a)]
+\item
+\hskip \labelsep
+\pgraph{\xt}{\yt}{\dl}{\dr}
+
+\item
+
+\begin{equation} \label{eq1}
+    x = \xt
+\end{equation}
+    Solving $x$ for $t$ \dots
+\begin{equation} \label{eq2}
+    t = \frac{x+1}{2}
+\end{equation}
+    Inserting \eqref{eq2} into the equation for $y$ \dots
+\begin{equation}
+\begin{split}
+    y &=\frac{1}{2}*\frac{x+1}{2}+1 \\
+      &=\frac{1}{4} x+\frac{5}{4}
+\end{split}
+\end{equation}
+
+\end{enumerate}
+
+\end{solution}
+
+
+%========Problem 10.1.7=========
+\newpage
+\def \xt {t^2-3}
+\def \yt {t + 2}
+\def \dl {-3}
+\def \dr {3}
+
+\begin{problem}{10.1.7}
+
+\begin{enumerate}[(a)]
+\item Sketch the curve by using the parametric equations to plot points. Indicate with an arrow the direction in which the curve is traced as $t$ increases.
+\item Eliminate the parameter to find a Cartesian equation of the curve.
+\end{enumerate}
+
+\[ 	x = \xt \]
+\[	y = \yt \]
+\[	\dl \leqslant t \leqslant \dr \]
+\end{problem}
+
+\begin{solution}
+
+\begin{enumerate}[(a)]
+\item
+\hskip \labelsep
+\pgraph{\xt}{\yt}{\dl}{\dr}
+
+\item
+
+\begin{equation} \label{eq1}
+    x=\xt
+\end{equation}
+    Solving $x$ for $t$ \dots
+\begin{equation} \label{eq2}
+    t = \sqrt{x+3}
+\end{equation}
+    Inserting \eqref{eq2} into the equation for $y$ \dots
+\begin{equation}
+    y =\sqrt{x+3}+2
+\end{equation}
+
+\end{enumerate}
+
+\end{solution}
+
+
+
+%========Problem 10.1.11=========
+
+\newpage
+\def \xt {sin(1/2*t)}
+\def \yt {cos(1/2*t)}
+\def \dl {-pi}
+\def \dr {pi}
+
+\begin{problem}{10.1.11}
+
+\begin{enumerate}[(a)]
+\item Eliminate the parameter to find a Cartesian equation of the curve.
+\item Sketch the curve by using the parametric equations to plot points. Indicate with an arrow the direction in which the curve is traced as $t$ increases.
+\end{enumerate}
+
+\[ 	x = \xt \]
+\[	y = \yt \]
+\[	\dl \leqslant t \leqslant \dr \]
+\end{problem}
+
+\begin{solution}
+
+\begin{enumerate}[(a)]
+\item
+
+\begin{equation} \label{eq1}
+    x=\xt
+\end{equation}
+    Solving $x$ for $t$ \dots
+\begin{equation} \label{eq2}
+	\def \t{ \frac{\arcsin{x}}{2} }
+    t = \t
+\end{equation}
+    Inserting \eqref{eq2} into the equation for $y$ \dots
+\begin{equation}
+    y = cos(1/2 * \t)
+\end{equation}
+
+\item
+\hskip \labelsep
+\pgraph{\xt}{\yt}{\dl}{\dr}
+
+
+\end{enumerate}
+
+\end{solution}
+
+
+
+%========Problem 10.1.12=========
+
+%========Problem 10.1.24=========
+
+%========Problem 10.1.37=========
+%========Problem 10.1.38=========
+
+
+%========Problem 10.2.1=========
+%========Problem 10.2.2=========
+%========Problem 10.2.3=========
+%========Problem 10.2.4=========
+%========Problem 10.2.5=========
+
+
+
+
+
+
+
+
+
+%
+%
+%
+%\begin{problem}{10.1.2}
+%x−t3 1t, y−t2 12, 22<t<2
+%\end{problem}
+%
+%\begin{proof}
+%Proof goes here. Repeat as needed
+%\end{proof}
+%
+%
+%
+%\begin{problem}{10.1.3}
+%x−t1sint, y−cost, 2 <t< 
+%\end{problem}
+%
+%\begin{proof}
+%Proof goes here. Repeat as needed
+%\end{proof}
+
+%
+%
+%\begin{problem}{x.yz}
+%Statement of problem goes here
+%\end{problem}
+%
+%\begin{proof}
+%Proof goes here. Repeat as needed
+%\end{proof}
+
 
 \end{document}
