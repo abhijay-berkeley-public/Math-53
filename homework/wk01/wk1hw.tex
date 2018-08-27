@@ -10,7 +10,8 @@
 %If you want to title your bold things something different just make another thing exactly like this but replace "problem" with the name of the thing you want, like theorem or lemma or whatever
 
 
-\usepackage[parfill]{parskip}
+\usepackage{tkz-fct}  
+\usepackage[parfill]{parskip, scrartcl}
 
 \begin{document}
 
@@ -33,11 +34,6 @@ Section 10.2: 1, 2, 3, 4, 5, 11, 13, 17, 18, 19, 29, 30, 32, 33, 41, 42, 43, 44,
 \newline
 
 
-Section 10.1: 10.1, 10.2, 3, 10.5, 10.7, 10.11, 10.12, 10.24, 10.37, 10.38
-Section 10.2: 10.1, 10.2, 10.3, 10.4, 10.5, 10.11, 10.13, 10.17, 10.18, 10.19, 10.29, 10.30, 10.32, 10.33, 10.41, 10.42, 10.43, 10.44, 10.48, 10.51, 10.52, 10.53, 10.73, 10.74
-
-
-
 \begin{problem}{10.1.1}
 Statement of problem goes here
 \end{problem}
@@ -46,166 +42,15 @@ Statement of problem goes here
 Proof goes here. Repeat as needed
 \end{proof}
 
-
-\begin{problem}{x.yz}
-Statement of problem goes here
-\end{problem}
-
-\begin{proof}
-Proof goes here. Repeat as needed
-\end{proof}
-
-
-\begin{problem}{x.yz}
-Statement of problem goes here
-\end{problem}
-
-\begin{proof}
-Proof goes here. Repeat as needed
-\end{proof}
+\begin{tikzpicture}[scale=1.5]
+  \tkzInit[xmin=-5,xmax=5,xstep=2,ymin=-10,ymax=4,ystep=2]
+  \tkzGrid[sub]
+  \tkzAxeX[step=2]
+  \tkzAxeY[step=2]
+  \tkzFctPar[samples=400,domain=-pi:pi]{t**3-3*t}{3*t**2-9}
+\end{tikzpicture}
 
 
-\begin{problem}{x.yz}
-Statement of problem goes here
-\end{problem}
-
-\begin{proof}
-Proof goes here. Repeat as needed
-\end{proof}
-
-
-\begin{problem}{x.yz}
-Statement of problem goes here
-\end{problem}
-
-\begin{proof}
-Proof goes here. Repeat as needed
-\end{proof}
-
-\begin{problem}{x.yz}
-Statement of problem goes here
-\end{problem}
-
-\begin{proof}
-Proof goes here. Repeat as needed
-\end{proof}
-
-
-\begin{problem}{x.yz}
-Statement of problem goes here
-\end{problem}
-
-\begin{proof}
-Proof goes here. Repeat as needed
-\end{proof}
-
-
-\begin{problem}{x.yz}
-Statement of problem goes here
-\end{problem}
-
-\begin{proof}
-Proof goes here. Repeat as needed
-\end{proof}
-
-
-\begin{problem}{x.yz}
-Statement of problem goes here
-\end{problem}
-
-\begin{proof}
-Proof goes here. Repeat as needed
-\end{proof}
-
-
-\begin{problem}{x.yz}
-Statement of problem goes here
-\end{problem}
-
-\begin{proof}
-Proof goes here. Repeat as needed
-\end{proof}
-
-
-\begin{problem}{x.yz}
-Statement of problem goes here
-\end{problem}
-
-\begin{proof}
-Proof goes here. Repeat as needed
-\end{proof}
-
-
-\begin{problem}{x.yz}
-Statement of problem goes here
-\end{problem}
-
-\begin{proof}
-Proof goes here. Repeat as needed
-\end{proof}
-
-
-\begin{problem}{x.yz}
-Statement of problem goes here
-\end{problem}
-
-\begin{proof}
-Proof goes here. Repeat as needed
-\end{proof}
-
-
-\begin{problem}{x.yz}
-Statement of problem goes here
-\end{problem}
-
-\begin{proof}
-Proof goes here. Repeat as needed
-\end{proof}
-
-
-\begin{problem}{x.yz}
-Statement of problem goes here
-\end{problem}
-
-\begin{proof}
-Proof goes here. Repeat as needed
-\end{proof}
-
-
-\begin{problem}{x.yz}
-Statement of problem goes here
-\end{problem}
-
-\begin{proof}
-Proof goes here. Repeat as needed
-\end{proof}
-
-
-\begin{problem}{x.yz}
-Statement of problem goes here
-\end{problem}
-
-\begin{proof}
-Proof goes here. Repeat as needed
-\end{proof}
-
-
-\begin{problem}{x.yz}
-Statement of problem goes here
-\end{problem}
-
-\begin{proof}
-Proof goes here. Repeat as needed
-\end{proof}
-
-
-\begin{problem}{x.yz}
-Statement of problem goes here
-\end{problem}
-
-\begin{proof}
-Proof goes here. Repeat as needed
-\end{proof}
 
 
 \begin{problem}{x.yz}
